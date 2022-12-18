@@ -1,0 +1,27 @@
+﻿@model List<ListItemViewModel>
+@foreach (var author in Model)
+{
+
+    <tr>
+        <td>@author.Name</td>
+        <td>@author.LastName</td>
+        <td class="text-end">
+            <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
+            <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
+        </td>
+        <td>
+            
+            <a asp-route="author-update" asp-route-id="@author.Id" data-toggle="modal" data-target="#quickModal"
+           class="single-btn author-update ">
+           Update
+            </a>
+             <a asp-route="admin-author-delete" asp-route-id="@author.Id"  data-id="@author.Id" 
+           class=" author-delete">
+           Delete
+            </a>
+
+        </td>
+
+    </tr>
+}
+

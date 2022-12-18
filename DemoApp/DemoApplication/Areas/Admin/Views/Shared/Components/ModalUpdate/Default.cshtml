@@ -1,0 +1,25 @@
+﻿@model UpdateViewModel
+<div class="row">
+    <div class="col-lg-5">
+        <!-- Product Details Slider Big Image-->
+        <!-- Product Details Slider Nav -->
+
+    </div>
+    <div class="col-lg-7 mt--30 mt-lg--30">
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control inp-update-name">
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control inp-update-lastname">
+        </div>
+        <button id="PutupdateAsync">
+            UpdateAsync
+        </button>
+            <a  asp-route="admin-author-updateAsync" asp-route-id="@Model.Id" id="PutupdateAsync" ></a>
+
+
+    </div>
+</div>

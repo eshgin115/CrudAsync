@@ -1,0 +1,172 @@
+﻿@using DemoApplication.Areas.Admin.ViewComponets
+@model List<ListItemViewModel>
+<div class="wrap">
+    <label for="modal" class="button btn btn-secondary ">Add new Autor</label>
+</div>
+
+
+<input type="checkbox" id="modal" class="hidden">
+<div class="box_modal">
+    @await Component.InvokeAsync(nameof(ModalAdd))
+</div>
+<div>
+    <a href="#" data-toggle="modal" data-target="#quickModal"
+       class="single-btn">
+    Salam
+    </a>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Authors</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>LastName</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tdbodyid">
+                        @await Component.InvokeAsync(nameof(ListView))
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div>
+<div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog"
+     aria-labelledby="quickModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+           
+               
+            <div class="product-details-modal">
+                  @await Component.InvokeAsync(nameof(ModalUpdate))
+            
+            </div>
+            <div class="modal-footer">
+                <div class="widget-social-share">
+                    <span class="widget-label">Share:</span>
+                    <div class="modal-social-share">
+                        <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* 기초 CSS 디자인 */
+    * {
+        box-sizing: border-box;
+    }
+    .ad{
+        width: 90px;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .hidden {
+        display: none;
+        visibility: hidden;
+    }
+
+    /* 본문 디자인 */
+
+    /* 버튼으로 사용할 라벨 디자인 */
+    .button {
+        font-size: 19px;
+        font-weight: 600;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    /* 모달 윈도우 디자인 */
+    .box_modal,.box_modal-update {
+        position: fixed;
+        display: block;
+        width: 400px;
+        height: 250px;
+        top: 50%;
+        left: 50%;
+        margin-top: -75px;
+        margin-left: -150px;
+        background: #d9e5e9;
+        border: 1px solid #386980;
+        overflow: hidden;
+        z-index:99;
+
+        /* 아래 부분은 애니메이션 효과를 위한 부분 */
+        visibility: collapse;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+        -webkit-transform: scale(0, 0);
+        -ms-transform: scale(0, 0);
+        transform: scale(0, 0);
+    }
+
+        .box_modal:hover {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+
+    /* 닫기 버튼으로 사용할 라벨 */
+    .closer {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 0;
+        right: 0;
+        background: #eee;
+        border-left: 1px solid #386980;
+        border-bottom: 1px solid #386980;
+        text-align: center;
+        line-height: 26px;
+        font-size: 16x;
+        cursor: pointer;
+    }
+
+    .text {
+        display: inline-block;
+        padding: 20px;
+    }
+
+        .text h3 {
+            font-size: 19px;
+            margin: 0;
+        }
+
+        .text p {
+            font-size: 13px;
+        }
+
+    /* 모달 윈도우가 팝업되는 코어 소스 */
+    input#modal[type=checkbox]:checked ~ .box_modal {
+        visibility: visible;
+        -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+
+</style>
+
+
+
+
+
+
+

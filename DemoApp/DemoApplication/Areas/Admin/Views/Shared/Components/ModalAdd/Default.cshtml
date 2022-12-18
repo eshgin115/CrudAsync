@@ -1,0 +1,24 @@
+﻿@model AddAuthorViewModel
+<label id="closerModal" for="modal" class="closer">x</label>
+<div class="text">
+    <div class="mb-3 row">
+        <label for="horizontalInput2" class="col-sm-2 col-form-label ad">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control txtFirstName" id="horizontalInput2" placeholder="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="horizontalInput2" class="col-sm-2 col-form-label ad">Surname</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control txtLastName" id="horizontalInput2" placeholder="Lastname">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <button id="btnAddAuth" class="btn btn-primary">Yadda Saxla</button>
+    <a id="authorhref" asp-route="admin-author-add"></a>
+
+
+</div>
+

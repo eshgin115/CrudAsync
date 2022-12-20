@@ -106,10 +106,7 @@ $(document).on("click", '#btnAddAuth', function (e) {
                 },
                 201: function (data) {
                     $("#tdbodyid").html(data);
-
-                    $(".box_modal").css({ 'overflow': 'hidden' });
-                    $(".box_modal").css({ 'visibility': 'collapse' });
-
+                    document.getElementById("closerModal").click();
                 },
                 400: function (data) {
                     $(".box_modal").html(data.responseText);

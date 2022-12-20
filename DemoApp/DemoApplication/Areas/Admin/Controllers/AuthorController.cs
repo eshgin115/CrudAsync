@@ -69,12 +69,12 @@ namespace DemoApplication.Areas.Admin.Controllers
             return ViewComponent(nameof(ModalUpdate),model);
         }
         [HttpPut("update/{id}", Name = "admin-author-updateAsync")]
-        public async Task<ActionResult> Update(int id,[FromBody]UpdateViewModel model)
+        public async Task<ActionResult> Update(int id,UpdateViewModel model)
         {
-            //var author = _dataContext.Authors.FirstOrDefault(a => a.Id == id);
-            
+            var author = _dataContext.Authors.FirstOrDefault(a => a.Id == id);
 
-            //if (author is null) return NotFound();
+
+            if (author is null) return NotFound();
 
             if (!ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace DemoApplication.Areas.Admin.Controllers
                 return viewComponent;
             }
 
-            //author.FirstName = model.Name;
-            //author.LastName = model.LastName;
-            //author.UpdatedAt = DateTime.Now;
+            author.FirstName = model.Name;
+            author.LastName = model.LastName;
+            author.UpdatedAt = DateTime.Now;
 
             await _dataContext.SaveChangesAsync();
 

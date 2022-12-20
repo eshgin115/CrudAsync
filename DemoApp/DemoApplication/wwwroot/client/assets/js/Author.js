@@ -1,34 +1,64 @@
-//$(document).on("click", '#PutupdateAsync', function (e) {
-//    e.preventDefault();
-//    let Aput = e.target.nextElementSibling.href;
-//    console.log(Aput)
-//    let valuename = $(".inp-update-name").val();
-//    let valuelastname = $(".inp-update-lastname").val();
-//    var insert = {};
+$(document).on("click", '#PutupdateAsync', function (e) {
+    e.preventDefault();
+    let Aput = e.target.nextElementSibling.href;
+    console.log(Aput)
+    let data = { "key": "value" }
+    let valuename = $(".inp-update-name").val();
+    console.log(valuename)
+    let valuelastname = $(".inp-update-lastname").val();
+    $.ajax({
+        type: 'PUT',
+        url: Aput,
+      
+        data: {
+            Name: valuename,
+            LastName: valuelastname
+        }
+            
+        , // access in body
+    }).done(function () {
+        console.log('SUCCESS');
+    }).fail(function (msg) {
+        console.log('FAIL');
+    }).always(function (msg) {
+        console.log('ALWAYS');
+    });
+    //$.ajax(
+    //    {
+    //        type: "PUT",
+    //        url: Aput,
+    //        data: {
+    //            Name: valuename,
+    //            LastName: valuelastname,
+    //        },
+    //        //statusCode: {
+    //        //    200: function (data) {
+    //        //        alert('1');
+    //        //        AfterSavedAll();
+    //        //    },
+    //        //    201: function (data) {
+    //        //        $("#tdbodyid").html(data);
 
-//    insert.Name = valuename;
-//    insert.LastName = valuelastname;
-//    var updatedData = {
-//        CrName: $(".inp-update-name").val(),
-//        CrLastName: $(".inp-update-lastname").val(),
-//    };
+    //        //        $(".box_modal").css({ 'overflow': 'hidden' });
+    //        //        $(".box_modal").css({ 'visibility': 'collapse' });
 
-//    $.ajax({
-//        type: 'PUT',
-//        url: Aput,
+    //        //    },
+    //        //    400: function (data) {
+    //        //        $(".box_modal").html(data.responseText);
+    //        //    },
+    //        //    404: function (data) {
+    //        //        alert('3');
+    //        //        bootbox.alert('<span style="color:Red;">Error While Saving Outage Entry Please Check</span>', function () { });
+    //        //    }
+    //        //    //}, success: function () {
+    //        //    //    alert('4');
+    //        //},
+    //        success: function (data, textStatus) {
+    //            console.log(textStatus.);
 
-//        processData: false,
-//        dataType: 'JSON',
-//        data: {
-//             $(".inp-update-name").serialize(),
-//        },
+})
 
-
-
-//    })
-//})
-
-$(document).on("click",".author-delete", function (event) {
+$(document).on("click", ".author-delete", function (event) {
     event.preventDefault();
     var id = $("#author-delet").attr("data-id");
     $.ajax({
@@ -45,7 +75,7 @@ $(document).on("click",".author-delete", function (event) {
 
         },
         error: function (err) {
-          alert(err)
+            alert(err)
 
         }
     });
@@ -70,12 +100,10 @@ $(document).on("click", '#btnAddAuth', function (e) {
                 },
                 201: function (data) {
                     $("#tdbodyid").html(data);
-                    function hide2 () {
-                        $(".box_modal").hide();
-                    };
-                    hide2();
 
-               
+                    $(".box_modal").css({ 'overflow': 'hidden' });
+                    $(".box_modal").css({ 'visibility': 'collapse' });
+
                 },
                 400: function (data) {
                     $(".box_modal").html(data.responseText);
@@ -84,8 +112,8 @@ $(document).on("click", '#btnAddAuth', function (e) {
                     alert('3');
                     bootbox.alert('<span style="color:Red;">Error While Saving Outage Entry Please Check</span>', function () { });
                 }
-            //}, success: function () {
-            //    alert('4');
+                //}, success: function () {
+                //    alert('4');
             },
             //success: function (data, textStatus) {
             //    console.log(textStatus.);

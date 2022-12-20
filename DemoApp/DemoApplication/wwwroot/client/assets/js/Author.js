@@ -17,16 +17,16 @@ $(document).on("click", '#PutupdateAsync', function (e) {
 
         ,
         statusCode: {
-            200: function (data) {
-                alert('1');
-                AfterSavedAll();
+            400: function (data) {
+                $(".box_modal").html(data.responseText);
             },
             201: function (data) {
                 $("#tdbodyid").html(data);
 
 
 
-            }// access in body
+            },
+            // access in body
         }
     });
     //$.ajax(

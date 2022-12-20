@@ -90,7 +90,9 @@ namespace DemoApplication.Areas.Admin.Controllers
             await _dataContext.SaveChangesAsync();
 
 
-            return ViewComponent(nameof(ListView));
+            var listviewComponent = ViewComponent(nameof(ListView));
+            listviewComponent.StatusCode = (int)HttpStatusCode.Created;
+            return listviewComponent;
         }
         [HttpDelete("delete/{id}", Name = "admin-author-delete")]
         public async Task<IActionResult> DeleteAsync(int id)

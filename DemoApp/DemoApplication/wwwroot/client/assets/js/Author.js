@@ -9,23 +9,29 @@ $(document).on("click", '#PutupdateAsync', function (e) {
     $.ajax({
         type: 'PUT',
         url: Aput,
-      
+
         data: {
             Name: valuename,
             LastName: valuelastname
         }
-            
-        , // access in body
-    }).done(function () {
-        console.log('SUCCESS');
-    }).fail(function (msg) {
-        console.log('FAIL');
-    }).always(function (msg) {
-        console.log('ALWAYS');
+
+        ,
+        statusCode: {
+            200: function (data) {
+                alert('1');
+                AfterSavedAll();
+            },
+            201: function (data) {
+                $("#tdbodyid").html(data);
+
+
+
+            }// access in body
+        }
     });
     //$.ajax(
-    //    {
     //        type: "PUT",
+    //        url: Aput,
     //        url: Aput,
     //        data: {
     //            Name: valuename,
